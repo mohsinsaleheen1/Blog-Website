@@ -39,6 +39,7 @@ function sinupbtn() {
 function signInbtn() {
   let loginEmail = document.getElementById("loname").value;
   let loginPass = document.getElementById("lopass").value;
+  let isFound = false;
   if (loginEmail === "" && loginPass === "") {
     alert("Please fill input details");
   } else {
@@ -47,11 +48,16 @@ function signInbtn() {
         userArray[i].useremail === loginEmail &&
         userArray[i].userpass === loginPass
       ) {
+        isFound=true;
+        break;
+      } 
+    }
+    if(isFound){
         console.log("el",username);
-      } else {
+        window.location.href="./data.html"
+    }else {
         alert("Login Failed");
       }
-    }
   }
 }
 
