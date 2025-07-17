@@ -13,7 +13,8 @@ signInButton.addEventListener("click", () => {
 // sinupForm
 let username = document.getElementById("user");
 let userArray = JSON.parse(localStorage.getItem("users")) || [];
-function sinupbtn() {
+function sinupbtn(e) {
+  e.preventDefault();
   let signName = document.getElementById("sname").value;
   let signEmail = document.getElementById("semail").value;
   let signPass = document.getElementById("spass").value;
@@ -36,7 +37,8 @@ function sinupbtn() {
     alert("Signup Successfully");
   }
 }
-function signInbtn() {
+function signInbtn(e) {
+    e.preventDefault();
   let loginEmail = document.getElementById("loname").value;
   let loginPass = document.getElementById("lopass").value;
   let isFound = false;

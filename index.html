@@ -12,20 +12,20 @@
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="#" onsubmit="sinupbtn(event)">
           <h1>Create Account</h1>
           <input type="text" placeholder="Name" id="sname" />
           <input type="email" placeholder="Email" id="semail" />
           <input type="password" placeholder="Password" id="spass" />
-          <button onclick="sinupbtn()">Sign Up</button>
+          <button>Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="#" onsubmit="signInbtn(event)">
           <h1>Sign in</h1>
           <input type="email" placeholder="Email" id="loname"/>
           <input type="password" placeholder="Password" id="lopass"/>
-          <button onclick="signInbtn()">Sign In</button>
+          <button>Sign In</button>
         </form>
       </div>
       <div class="overlay-container">
