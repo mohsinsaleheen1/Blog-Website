@@ -1,60 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Css/blog.css" />
+    <link rel="stylesheet" href="assets/Css/resposive.css" />
+    <!-- font-awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="assets/Css/blog.css" />
-  <link rel="stylesheet" href="assets/Css/resposive.css">
-  <!-- font-awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-  <div class="main">
-    <header>
-      <div class="logo">
-        <h1>Blog<span>website</span></h1>
-      </div>
-      <div class="userdetail">
-        <p><i class="fa-solid fa-circle-user"></i><span id="user">Hello</span></p>
-        <button onclick="logOut()">Logout</button>
-      </div>
-    </header>
-    <div class="blogs">
-      <div class="createblog">
-        <button onclick="createBlog()" class="blogbtn" id="Cblog">Create Blog</button>
-        <button onclick="viewBlogs()" class="blogbtn" id="Vblog">View Blogs</button>
-      </div>
-      <div class="cards" id="Cards">
-
-      </div>
-    </div>
-  </div>
-  <!-- Blog Create Form Model -->
-  <div class="hide" id="blog">
-    <div class="form">
-      <div class="close">
-        <h1>Create Your Blog</h1>
-        <i class="fa-solid fa-xmark" onclick="closebtn()"></i>
-      </div>
-
-      <form action="" onsubmit="submitBlog(event)">
-        <input type="text" id="title" name="title" placeholder="Blog title">
-        <input type="text" id="author" name="author" placeholder="Author Name">
-        <textarea id="content" name="content" placeholder="Blog content"></textarea>
-        <label for="img">Select image:</label>
-        <input type="file" id="image" name="img" accept="image/*">
-        <div class="btn">
-          <button type="submit">Create Blog</button>
+  <body>
+    <div class="main">
+      <header>
+        <div class="logo">
+          <h1>Blog<span>website</span></h1>
         </div>
-      </form>
+        <div class="userdetail">
+          <p>
+            <i class="fa-solid fa-circle-user"></i><span id="bloguser"></span>
+          </p>
+          <button onclick="logOut()">Logout</button>
+        </div>
+      </header>
+      <div class="blogs">
+        <div class="createblog">
+          <button onclick="createBlog()" class="blogbtn" id="Cblog">
+            Create Blog
+          </button>
+          <button onclick="viewBlogs()" class="blogbtn" id="Vblog">
+            View Blogs
+          </button>
+        </div>
+        <div class="cards" id="Cards"></div>
+      </div>
     </div>
-  </div>
-  <script src="assets/Js/app.js"></script>
-</body>
+    <!-- Blog Create Form Model -->
+    <div class="hide" id="blog">
+      <div class="form">
+        <div class="close">
+          <h1>Create Your Blog</h1>
+          <i class="fa-solid fa-xmark" onclick="closebtn()"></i>
+        </div>
 
+        <form action="" onsubmit="submitBlog(event)">
+          <input type="text" id="title" name="title" placeholder="Blog title" required/>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Author Name"
+            required
+          />
+          <textarea
+            id="content"
+            name="content"
+            placeholder="Blog content"
+            required
+          ></textarea>
+          <label for="img">Select image:</label>
+          <input type="file" id="image" name="img" accept="image/*" />
+          <div class="btn">
+            <button type="submit">Create Blog</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="assets/Js/app.js"></script>
+    <script>
+      let loggedInUser = localStorage.getItem("loggedInUser");
+      if (loggedInUser) {
+        document.getElementById("bloguser").textContent = loggedInUser;
+      }
+    </script>
+  </body>
 </html>
+

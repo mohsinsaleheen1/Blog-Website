@@ -11,7 +11,6 @@ signInButton.addEventListener("click", () => {
 });
 
 // sinupForm
-let username = document.getElementById("user");
 let userArray = JSON.parse(localStorage.getItem("users")) || [];
 function sinupbtn(e) {
   e.preventDefault();
@@ -38,10 +37,11 @@ function sinupbtn(e) {
   }
 }
 function signInbtn(e) {
-    e.preventDefault();
+  e.preventDefault();
   let loginEmail = document.getElementById("loname").value;
   let loginPass = document.getElementById("lopass").value;
   let isFound = false;
+  let user;
   if (loginEmail === "" && loginPass === "") {
     alert("Please fill input details");
   } else {
@@ -50,16 +50,18 @@ function signInbtn(e) {
         userArray[i].useremail === loginEmail &&
         userArray[i].userpass === loginPass
       ) {
-        isFound=true;
+        user = userArray[i].userName;
+        localStorage.setItem("loggedInUser", user);
+        isFound = true;
         break;
-      } 
-    }
-    if(isFound){
-        console.log("el",username);
-        window.location.href="./data.html"
-    }else {
-        alert("Login Failed");
       }
+    }
+    if (isFound) {
+      console.log("ello", user);
+      window.location.href = "./data.html";
+    } else {
+      alert("Login Failed");
+    }
   }
 }
 
@@ -68,7 +70,6 @@ function closebtn() {
   let closeButton = document.getElementById("blog");
   closeButton.classList.remove("model");
   closeButton.classList.add("hide");
-  console.log(closeButton);
 }
 function createBlog() {
   let blog = document.getElementById("blog");
@@ -108,7 +109,6 @@ function submitBlog(e) {
   let authorName = document.getElementById("author").value;
   let blogImage = document.getElementById("image").value;
   let closeButton = document.getElementById("blog");
-  let blogButton = document.getElementById("Cblog");
   let viewBlogs = document.getElementById("Vblog");
   // SubmitBlogs In LocalStorage
   let BlogArray = JSON.parse(localStorage.getItem("blog")) || [];
@@ -123,9 +123,6 @@ function submitBlog(e) {
     // Hide the blog modal
     closeButton.classList.remove("model");
     closeButton.classList.add("hide");
-    // Hide the blog button
-    blogButton.classList.remove("blogbtn");
-    blogButton.classList.add("hide");
     // Create a new blog object
     let BlogDetail = {
       title: blogTitle,
@@ -135,7 +132,6 @@ function submitBlog(e) {
     BlogArray.push(BlogDetail);
     localStorage.setItem("blog", JSON.stringify(BlogArray));
   }
-  console.log("Hello", viewBlogs());
 }
 // LogOut
 function logOut() {

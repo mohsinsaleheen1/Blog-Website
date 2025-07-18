@@ -91,7 +91,7 @@ body {
 .blogs .card {
   background: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(46, 46, 46, 0.22);
-  width: 400px;
+  width: 340px;
   border-radius: 10px;
 }
 
@@ -175,7 +175,7 @@ body {
   height: 100vh;
   top: 0px;
   left: 0px;
-  background: #f6f5f770;
+  background: #00000070;
   display: flex;
   justify-content: center;
   align-items: center;
